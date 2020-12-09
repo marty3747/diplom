@@ -10,9 +10,9 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    val test = Person("Andrey", "Mironov", 23)
-    val test1 = Person("Tony", "Stark", 25)
-    val test2 = Person("Vito", "Scaletta", 27)
+    val test = Person("Andrey", "Mironov", 23, 55523, "sdfk@mail.ru", "Very old")
+    val test1 = Person("Tony", "Stark", 25, 55123, "adf@mail.ru", "Very small")
+    val test2 = Person("Vito", "Scaletta", 27, 54523, "agb@mail.ru", "Very smile")
     val collection = mutableListOf(test1,test,test2);
 
 
