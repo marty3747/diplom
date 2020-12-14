@@ -10,6 +10,8 @@ data class Person(
     val phone: Int,
     val email:String,
     val descr: String):Serializable {
+
+
     operator fun compareTo(person: Person): Int {
         return this.age - person.age
     }

@@ -1,81 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="295dp"
-        android:layout_marginBottom="686dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/tv1"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="294dp"
-        android:layout_marginBottom="657dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tv3"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="293dp"
-        android:layout_marginBottom="627dp"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/tv4"
-        android:layout_width="93dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv2"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="111dp"
-        android:layout_marginEnd="293dp"
-        android:layout_marginBottom="598dp"
-        android:text="TextView" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addRecordBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_add_white" />
-
 
 </RelativeLayout>
