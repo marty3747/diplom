@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.demo.diplom.Person
 
 import com.demo.diplom.R
+import kotlinx.android.synthetic.main.fragment_add_update.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,11 +25,28 @@ class AddUpdateFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    /*val name = nameEt.text.toString()
+    val surname = surnameEt.text.toString()
+    val age = ageEt.text.toString().toInt()
+    val phone = phoneEt.text.toString().toInt()
+    val email = emailEt.text.toString()
+    val descr = bioEt.text.toString()*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val person = Person ("fgfd", "dfgfdg", 34, 3434, "fdgfdg", "fdgfdg")
+        saveBtn.setOnClickListener {
+            requireFragmentManager().beginTransaction()
+                .replace(R.id.container, PersonsFragment.newInstance(person))
+                .commit()
         }
     }
 
