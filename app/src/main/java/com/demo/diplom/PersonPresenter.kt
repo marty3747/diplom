@@ -32,10 +32,4 @@ class PersonPresenter: MvpPresenter<PersonView>() {
             false
         }
     }
-
-    /*
-    private fun phoneIsCorrect(nameText: String): Boolean {
-        if(nameText.isEmpty()) return false
-    }*/
-
 }
