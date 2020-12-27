@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.demo.diplom"
-        minSdkVersion 24
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -22,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 
 }
@@ -44,7 +48,11 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.2.1'
 
-    implementation 'com.github.moxy-community:moxy:2.1.2'
-    kapt 'com.github.moxy-community:moxy-compiler:2.1.2'
+    def moxy_version = '2.2.0'
+
+    implementation "com.github.moxy-community:moxy:$moxy_version"
+    implementation "com.github.moxy-community:moxy-androidx:$moxy_version"
+    implementation "com.github.moxy-community:moxy-ktx:$moxy_version"
+    kapt "com.github.moxy-community:moxy-compiler:$moxy_version"
 
 }
