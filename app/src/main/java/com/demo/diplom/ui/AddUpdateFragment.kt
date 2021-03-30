@@ -3,15 +3,23 @@ package com.demo.diplom.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.demo.diplom.Person
 import com.demo.diplom.PersonPresenter
 import com.demo.diplom.PersonView
 
 import com.demo.diplom.R
 import com.demo.diplom.persons.PersonsFragment
+import com.demo.diplom.persons.presentation.PersonsPresenter
 import kotlinx.android.synthetic.main.fragment_add_update.*
 import moxy.MvpAppCompatFragment
 
-class AddUpdateFragment : MvpAppCompatFragment (R.layout.fragment_add_update), PersonView {
+class AddUpdateFragment(presenterOfPersons: PersonsPresenter) : MvpAppCompatFragment (R.layout.fragment_add_update), PersonView {
+
+    private var presenterOfPersons: PersonsPresenter
+
+    init {
+        this.presenterOfPersons = presenterOfPersons
+    }
 
     private val presenter = PersonPresenter()
 
@@ -21,14 +29,8 @@ class AddUpdateFragment : MvpAppCompatFragment (R.layout.fragment_add_update), P
         presenter.attachView(this)
 
         initListeners()
-        //val person = Person ("fgfd", "dfgfdg", 34, 3434, "fdgfdg", "fdgfdg")
     }
     private fun initListeners() {
-       /* saveBtn.setOnClickListener {
-            requireFragmentManager().beginTransaction()
-                .replace(R.id.container, PersonsFragment.newInstance(person))
-                .commit()
-        }*/
         saveBtn.setOnClickListener {
             requireFragmentManager().beginTransaction()
                 .replace(R.id.container,
@@ -36,7 +38,15 @@ class AddUpdateFragment : MvpAppCompatFragment (R.layout.fragment_add_update), P
                 )
                 .addToBackStack("PersonsFragment")
                 .commit()
+
+            presenterOfPersons.viewPersons(nameEt.text.toString(),
+                surnameEt.text.toString(),
+                ageEt.text.toString().toInt(),
+                phoneEt.text.toString().toInt(),
+                emailEt.text.toString(),
+                bioEt.text.toString())
         }
+
         checkBtn.setOnClickListener {
             presenter.validate(
                 nameEt.text.toString(),
@@ -60,5 +70,4 @@ class AddUpdateFragment : MvpAppCompatFragment (R.layout.fragment_add_update), P
     private fun showError(name: String) {
         Toast.makeText(requireContext(), "Ошибка в поле $name", Toast.LENGTH_SHORT).show()
     }
-
 }

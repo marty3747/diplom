@@ -1,7 +1,6 @@
 package com.demo.diplom.persons
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.demo.diplom.Person
@@ -9,6 +8,7 @@ import com.demo.diplom.R
 import com.demo.diplom.persons.presentation.PersonsPresenter
 import com.demo.diplom.persons.presentation.PersonsView
 import com.demo.diplom.ui.AddUpdateFragment
+import com.demo.diplom.ui.PersonDetails
 import kotlinx.android.synthetic.main.fragment_persons.*
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
@@ -31,14 +31,16 @@ class PersonsFragment : MvpAppCompatFragment(R.layout.fragment_persons), Persons
 
         with(rvPersons) {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = PersonsAdapter().also {
+            adapter = PersonsAdapter(onPersonClick = { person ->
+                presenter.onPersonClick(person)
+            }).also {
                 personsAdapter = it
             }
         }
 
         addRecordBtn.setOnClickListener {
             requireFragmentManager().beginTransaction()
-                .replace(R.id.container, AddUpdateFragment())
+                .replace(R.id.container, AddUpdateFragment(presenter))
                 .addToBackStack("AddUpdateFragment")
                 .commit()
         }
@@ -59,9 +61,12 @@ class PersonsFragment : MvpAppCompatFragment(R.layout.fragment_persons), Persons
         personsAdapter?.setData(persons)
     }
 
-    //class PersonsAdapter
-
-    //private fun openAddPerson(person: Person) {}
+    override fun openPersonDetail(person: Person) {
+        requireFragmentManager().beginTransaction()
+            .replace(R.id.container, PersonDetails.newInstance(person))
+            .addToBackStack("PersonDetails")
+            .commit()
+    }
 
     companion object {
 

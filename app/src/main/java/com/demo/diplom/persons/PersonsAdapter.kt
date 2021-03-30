@@ -9,9 +9,10 @@ import com.demo.diplom.R
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.persons_item.*
 
-class PersonsAdapter: RecyclerView.Adapter<PersonsAdapter.ViewHolder>() {
+class PersonsAdapter(private val onPersonClick: (Person) -> Unit):
+    RecyclerView.Adapter<PersonsAdapter.ViewHolder>() {
 
-    private var persons: MutableList<Person> = mutableListOf()
+    var persons: MutableList<Person> = mutableListOf()
 
     fun setData(persons: List<Person>) {
         this.persons.clear()
@@ -25,8 +26,12 @@ class PersonsAdapter: RecyclerView.Adapter<PersonsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = persons[position]
-        holder.nameOfPerson.text = item.name
-        holder.surnameOfPerson.text = item.surname
+        holder.nameOfPerson.text = "Имя: ${item.name}"
+        holder.surnameOfPerson.text = "Фамилия: ${item.surname}"
+        holder.phoneOfPerson.text = "Телефон: ${item.phone}"
+        holder.containerView.setOnClickListener {
+            onPersonClick(item)
+        }
     }
 
     override fun getItemCount(): Int = persons.size
